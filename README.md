@@ -9,7 +9,7 @@ left or right status bar.
 Shows how many unread emails I have in both my personal and work accounts:
 ![prefix_off](screenshots/maildir_counter.png)
 
-# Usage
+### Usage
 
 Add the list of folders you want to count to your `tmux.conf`. All folders must be separated by `|`.
 
@@ -23,7 +23,7 @@ Then, add the `maildir_counter` to your left/right status bar where `N` is the i
 set -g status-right 'Personal: #{maildir_counter_1}, Work: #{maildir_counter_2} | %a %Y-%m-%d %H:%M'
 ```
 
-# Installation with Tmux Plugin Manager (recommended)
+### Installation with Tmux Plugin Manager (recommended)
 
 Add plugin to the list of TPM plugins:
 
@@ -33,7 +33,7 @@ set -g @plugin 'erickpintor/tmux-maildir-counter'
 
 Press prefix + I to install it.
 
-# Manual Installation
+### Manual Installation
 
 Clone the repo:
 
@@ -53,6 +53,6 @@ Reload TMUX environment with:
 $ tmux source-file ~/.tmux.conf
 ```
 
-# License
+### License
 
 [MIT](LICENSE)
