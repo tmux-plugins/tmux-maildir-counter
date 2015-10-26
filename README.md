@@ -28,7 +28,7 @@ set -g status-right 'Personal: #{maildir_counter_1}, Work: #{maildir_counter_2} 
 Add plugin to the list of TPM plugins:
 
 ```tmux.conf
-set -g @plugin 'erickpintor/tmux-maildir-counter'
+set -g @plugin 'tmux-plugins/tmux-maildir-counter'
 ```
 
 Press prefix + I to install it.
@@ -38,7 +38,7 @@ Press prefix + I to install it.
 Clone the repo:
 
 ```bash
-$ git clone https://github.com/erickpintor/tmux-maildir-counter.git ~/clone/path
+$ git clone https://github.com/tmux-plugins/tmux-maildir-counter.git ~/clone/path
 ```
 
 Add this line to your .tmux.conf:
