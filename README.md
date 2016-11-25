@@ -14,7 +14,7 @@ Shows how many unread emails I have in both my personal and work accounts:
 Add the list of folders you want to count to your `tmux.conf`. All folders must be separated by `|`.
 
 ```tmux.conf
-set -f @maildir_counters '~/Mail/Personal/INBOX/new|~/Mail/Work/INBOX/new'
+set -g @maildir_counters '~/Mail/Personal/INBOX/new|~/Mail/Work/INBOX/new'
 ```
 
 Then, add the `maildir_counter` to your left/right status bar where `N` is the index of the folder you want to show.
