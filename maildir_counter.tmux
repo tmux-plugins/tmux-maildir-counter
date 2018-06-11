@@ -12,7 +12,7 @@ maildir_counters='@maildir_counters'
 interpolate() {
     local -r status="$1"
     local -r counter="${place_holder/N/$2}"
-    local -r count_files="#(ls -1 $3 | wc -l | xargs)"
+    local -r count_files="#(ls -1 $3 \| wc -l \| xargs)"
     local -r status_value=$(tmux show-option -gqv "$status")
     tmux set-option -gq "$status" "${status_value/$counter/$count_files}"
 }
