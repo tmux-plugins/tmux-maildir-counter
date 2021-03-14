@@ -1,5 +1,11 @@
 # Tmux maildir counter
 
+**NOTE:** This project is no longer in active development. Bugs and 
+features requests won't get implemented by the project maintainers.
+We still welcome discussions and community pull requests, though.
+
+---
+
 Plugin that counts files on a specific mail directory.
 
 If you use [offlineimap](http://offlineimap.org/) to synchronize your emails with your computer,
