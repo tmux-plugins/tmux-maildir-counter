@@ -25,8 +25,20 @@ set -g @maildir_counters '~/Mail/Personal/INBOX/new|~/Mail/Work/INBOX/new'
 
 Then, add the `maildir_counter` to your left/right status bar where `N` is the index of the folder you want to show.
 
-```tmux.confi
+```tmux.conf
 set -g status-right 'Personal: #{maildir_counter_1}, Work: #{maildir_counter_2} | %a %Y-%m-%d %H:%M'
+```
+
+If you want to get unread count, pass only the path of the IMAP folder and plugin will check `cur` and `new` subfolders, filter them and present any unread mail. Omit trailing slash.
+
+```tmux.conf
+set -g @maildir_counters '~/Mail/Personal/INBOX/new|~/Mail/Work/INBOX'
+```
+
+Then, add the `maildir_unread_counter` variable and set it to `yes`:
+
+```tmux.conf
+set -g @maildir_unread_counter 'yes'
 ```
 
 ### Installation with Tmux Plugin Manager (recommended)
