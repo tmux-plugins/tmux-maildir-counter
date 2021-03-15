@@ -25,7 +25,7 @@ set -g @maildir_counters '~/Mail/Personal/INBOX/new|~/Mail/Work/INBOX/new'
 
 Then, add the `maildir_counter` to your left/right status bar where `N` is the index of the folder you want to show.
 
-```tmux.config
+```tmux.conf
 set -g status-right 'Personal: #{maildir_counter_1}, Work: #{maildir_counter_2} | %a %Y-%m-%d %H:%M'
 ```
 
@@ -37,7 +37,7 @@ set -g @maildir_counters '~/Mail/Personal/INBOX/new|~/Mail/Work/INBOX'
 
 Then, add the `maildir_unread_counter` variable and set it to `yes`:
 
-```tmux.config
+```tmux.conf
 set -g @maildir_unread_counter 'yes'
 ```
 
