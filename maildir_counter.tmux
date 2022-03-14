@@ -10,6 +10,18 @@ place_holder="\#{maildir_counter_N}"
 maildir_counters='@maildir_counters'
 maildir_unread_counter='@maildir_unread_counter'
 
+get_tmux_option() {
+    local option=$1
+    local default_value=$2
+    local option_value="$(tmux show-option -gqv "$option")"
+
+    if [[ -z "$option_value" ]]; then
+        echo "$default_value"
+    else
+        echo "$option_value"
+    fi
+}
+
 interpolate() {
     local -r status="$1"
     local -r counter="${place_holder/N/$2}"
@@ -23,17 +35,20 @@ interpolate() {
     if [ "$enable_unread_counter" == 'yes' ]; then
         count_files_output=$count_files_cur+$count_files_new
     fi
-    local -r status_value=$(tmux show-option -gqv "$status")
+    local -r status_value=$(get_tmux_option "$status")
     tmux set-option -gq "$status" "${status_value//$counter/$count_files_output}"
 }
 
 main() {
     IFS=\|
     local i=1
-    local toggle_unread_counter=$(tmux show-option -gqv "$maildir_unread_counter")
-    for maildir in $(tmux show-option -gqv "$maildir_counters"); do
-        interpolate "status-left" "$i" "$maildir" "$toggle_unread_counter"
-        interpolate "status-right" "$i" "$maildir" "$toggle_unread_counter"
+    local toggle_unread_counter=$(get_tmux_option "$maildir_unread_counter")
+    local interpolated_options="$(get_tmux_option "@plugin_interpolated_options" "status-right status-left")"
+    for maildir in $(get_tmux_option "$maildir_counters"); do
+        for interpolated_option in $interpolated_options
+        do
+            interpolate $interpolated_option "$i" "$maildir" "$toggle_unread_counter"
+        done
         i=$((i+1))
     done
 }
